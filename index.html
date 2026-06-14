@@ -1,0 +1,99 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        
+        body { 
+            /* ব্যাকগ্রাউন্ড সম্পূর্ণ কালো করা হয়েছে */
+            background: #000000; 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; margin: 0; 
+        }
+
+        .container { 
+            background: rgba(20, 20, 20, 0.9); 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+            width: 100%; max-width: 420px; 
+            color: white; 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        h2 { 
+            color: #ffffff; 
+            text-align: center; 
+            margin-bottom: 1.5rem; 
+            letter-spacing: 1px;
+        }
+
+        input, textarea { 
+            width: 100%; 
+            padding: 14px; 
+            margin-bottom: 1.2rem; 
+            border: 1px solid #333; 
+            border-radius: 10px; 
+            background: #111; 
+            color: white; 
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus { 
+            border-color: #d93025; 
+            outline: none; 
+            box-shadow: 0 0 10px rgba(217, 48, 37, 0.3);
+        }
+
+        button { 
+            width: 100%; 
+            padding: 14px; 
+            background: linear-gradient(90deg, #d93025, #b71c1c); 
+            color: white; 
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 48, 37, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contact Me</h2>
+    <form id="contactForm" onsubmit="sendEmail(event)">
+        <input type="text" id="name" placeholder="Enter your name" required>
+        <textarea id="message" rows="4" placeholder="Enter your message or question" required></textarea>
+        <button type="submit">Send Email</button>
+    </form>
+</div>
+
+<script>
+    function sendEmail(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const nameValue = name;
+        const message = document.getElementById('message').value;
+        const email = "neeshadahmed24@gmail.com";
+        
+        const subject = encodeURIComponent("Message from website: " + nameValue);
+        const body = encodeURIComponent("Name: " + nameValue + "\n\nMessage: " + message);
+        
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    }
+</script>
+
+</body>
+</html>
